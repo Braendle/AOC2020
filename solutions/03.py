@@ -15,12 +15,9 @@ def walk(data: np.array, right_step: int, down_step: int):
 
 
 # ============= Input Data ============= #
-data = []
 with open("./inputs/03/input.txt") as h_file:
-    for line in h_file.readlines():
-        data.append([x == '#' for x in line.strip()])
-
-data = np.array(data)
+    data = [[x == '#' for x in line] for line in h_file.read().splitlines()]
+    data = np.array(data)
 
 # =============== PART 1 =============== #
 res1 = sum(walk(data, 3, 1))
