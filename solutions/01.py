@@ -7,6 +7,7 @@
 from itertools import permutations
 
 import numpy as np
+from more_itertools import first_true
 
 # ======= Helper Functions/Classes ======= #
 
@@ -15,15 +16,9 @@ with open("./inputs/01/input.txt") as h_file:
     data = [int(x) for x in h_file.readlines()]
 
 # =============== PART 1 =============== #
-for comb in  permutations(data, 2):
-    if sum(comb) == 2020:
-        res1 = np.prod(comb)
-        break
+res1 = np.prod(first_true(permutations(data, 2), pred=lambda comb: sum(comb) == 2020))
 print("Result of Part 1: {}".format(res1))
 
 # =============== PART 2 =============== #
-for comb in  permutations(data, 3):
-    if sum(comb) == 2020:
-        res2 = np.prod(comb)
-        break
+res2 = np.prod(first_true(permutations(data, 3), pred=lambda comb: sum(comb) == 2020))
 print("Result of Part 2: {}".format(res2))
