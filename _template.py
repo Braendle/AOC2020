@@ -16,8 +16,8 @@ with open("./inputs/{day:02d}/input.txt") as h_file:
 
 # =============== PART 1 =============== #
 res1 = None
-print("Result of Part 1: {{}}".format(res1))
+print(f"Result of Part 1: {{res1}}")
 
 # =============== PART 2 =============== #
 res2 = None
-print("Result of Part 2: {{}}".format(res2))
+print(f"Result of Part 2: {{res2}}")

@@ -24,7 +24,7 @@ data = np.array(data)
 
 # =============== PART 1 =============== #
 res1 = sum(walk(data, 3, 1))
-print("Result of Part 1: {}".format(res1))
+print(f"Result of Part 1: {res1}")
 
 # =============== PART 2 =============== #
 moves = [
@@ -36,4 +36,4 @@ moves = [
 ]
 
 res2 = np.prod([sum(walk(data, m[0], m[1])) for m in moves])
-print("Result of Part 2: {}".format(res2))
+print(f"Result of Part 2: {res2}")

@@ -17,8 +17,8 @@ with open("./inputs/01/input.txt") as h_file:
 
 # =============== PART 1 =============== #
 res1 = np.prod(first_true(permutations(data, 2), pred=lambda comb: sum(comb) == 2020))
-print("Result of Part 1: {}".format(res1))
+print(f"Result of Part 1: {res1}")
 
 # =============== PART 2 =============== #
 res2 = np.prod(first_true(permutations(data, 3), pred=lambda comb: sum(comb) == 2020))
-print("Result of Part 2: {}".format(res2))
+print(f"Result of Part 2: {res2}")
