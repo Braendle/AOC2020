@@ -4,8 +4,10 @@
     Solution to Day 3 (https://adventofcode.com/2020/day/3)
 """
 
-import numpy as np
 from itertools import count
+from pathlib import Path
+
+import numpy as np
 
 
 # ======= Helper Functions/Classes ======= #
@@ -15,9 +17,9 @@ def walk(data: np.array, right_step: int, down_step: int):
 
 
 # ============= Input Data ============= #
-with open("./inputs/03/input.txt") as h_file:
-    data = [[x == '#' for x in line] for line in h_file.read().splitlines()]
-    data = np.array(data)
+raw_data = Path("./inputs/03/input.txt").read_text()
+data = [[x == '#' for x in line] for line in raw_data.splitlines()]
+data = np.array(data)
 
 # =============== PART 1 =============== #
 res1 = sum(walk(data, 3, 1))

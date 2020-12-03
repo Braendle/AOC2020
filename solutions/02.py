@@ -4,13 +4,15 @@
     Solution to Day 2 (https://adventofcode.com/2020/day/2)
 """
 
+from pathlib import Path
+
 from common import parselines
 
 # ======= Helper Functions/Classes ======= #
 
 # ============= Input Data ============= #
-with open("./inputs/02/input.txt") as h_file:
-    data = parselines("{l:d}-{h:d} {c}: {s}", h_file.read())
+raw_data = Path("./inputs/02/input.txt").read_text()
+data = parselines("{l:d}-{h:d} {c}: {s}", raw_data)
 
 # =============== PART 1 =============== #
 res1 = sum(d["l"] <= d["s"].count(d["c"]) <= d["h"] for d in data)

@@ -4,15 +4,15 @@
     Solution to Day {day} (https://adventofcode.com/{year:04d}/day/{day})
 """
 
-
+from pathlib import Path
 
 # ======= Helper Functions/Classes ======= #
 
 
 
 # ============= Input Data ============= #
-with open("./inputs/{day:02d}/input.txt") as h_file:
-    data = h_file.readlines()
+raw_data = Path("./inputs/{day:02d}/input.txt").read_text()
+data = raw_data.splitlines()
 
 # =============== PART 1 =============== #
 res1 = None

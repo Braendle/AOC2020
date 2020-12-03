@@ -5,6 +5,7 @@
 """
 
 from itertools import permutations
+from pathlib import Path
 
 import numpy as np
 from more_itertools import first_true
@@ -12,8 +13,8 @@ from more_itertools import first_true
 # ======= Helper Functions/Classes ======= #
 
 # ============= Input Data ============= #
-with open("./inputs/01/input.txt") as h_file:
-    data = [int(x) for x in h_file.readlines()]
+raw_data = Path("./inputs/01/input.txt").read_text()
+data = [int(x) for x in raw_data.splitlines()]
 
 # =============== PART 1 =============== #
 res1 = np.prod(first_true(permutations(data, 2), pred=lambda comb: sum(comb) == 2020))
