@@ -22,14 +22,14 @@ print(f"Result of Part 1: {res1}")
 
 # =============== PART 2 =============== #
 RULES = {
-    "byr": lambda v: re.match(r"^\d{4}$", v) and 1920 <= int(v) <= 2002,
-    "iyr": lambda v: re.match(r"^\d{4}$", v) and 2010 <= int(v) <= 2020,
-    "eyr": lambda v: re.match(r"^\d{4}$", v) and 2020 <= int(v) <= 2030,
-    "hgt": lambda v: re.match(r"^(\d+)(cm|in)$", v) and ((v[-2:] == "cm" and 150 <= int(v[:-2]) <= 193) or
+    "byr": lambda v: re.fullmatch(r"\d{4}", v) and 1920 <= int(v) <= 2002,
+    "iyr": lambda v: re.fullmatch(r"\d{4}", v) and 2010 <= int(v) <= 2020,
+    "eyr": lambda v: re.fullmatch(r"\d{4}", v) and 2020 <= int(v) <= 2030,
+    "hgt": lambda v: re.fullmatch(r"\d+(cm|in)", v) and ((v[-2:] == "cm" and 150 <= int(v[:-2]) <= 193) or
                                                          (v[-2:] == "in" and 59 <= int(v[:-2]) <= 76)),
-    "hcl": lambda v: re.match(r"^#[0-9a-f]{6}$", v),
+    "hcl": lambda v: re.fullmatch(r"#[0-9a-f]{6}", v),
     "ecl": lambda v: v in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"],
-    "pid": lambda v: re.match(r"^\d{9}$", v),
+    "pid": lambda v: re.fullmatch(r"\d{9}", v),
     "cid": lambda _: True
 }
 pws_valid_values = [pw for pw in pws_valid_fields if all(RULES[k](v) for k, v in pw.items())]
