@@ -12,7 +12,7 @@ from more_itertools import consecutive_groups
 
 # ============= Input Data ============= #
 raw_data = Path("./inputs/05/input.txt").read_text()
-data = [x for x in raw_data.splitlines()]
+data = raw_data.splitlines()
 
 # =============== PART 1 =============== #
 ids = [int(d.translate(d.maketrans("FBLR", "0101")), 2) for d in data]
