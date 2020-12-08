@@ -14,23 +14,19 @@ def run(instrs):
     seen = []
     acc = 0
     ic = 0
-    while True:
+    while ic < len(instrs):
         cur_instr = instrs[ic]
         if ic in seen:
             return acc, False
         seen.append(ic)
-        if cur_instr['i'] == "nop":
-            ic += 1
-        elif cur_instr['i'] == "acc":
+        if cur_instr['i'] == "acc":
             acc += cur_instr['d']
-            ic += 1
         elif cur_instr['i'] == "jmp":
             ic += cur_instr['d']
-        else:
-            raise Exception("unknown instruction")
+            continue
+        ic += 1
 
-        if ic >= len(instrs):
-            return acc, True
+    return acc, True
 
 
 # ============= Input Data ============= #
@@ -44,10 +40,9 @@ print(f"Result of Part 1: {res1}")
 # =============== PART 2 =============== #
 xchg_instr_idxs = [i for i, x in enumerate(instrs) if x['i'] in ['nop', 'jmp']]
 for xchg_instr_idx in xchg_instr_idxs:
-    org = instrs[xchg_instr_idx]['i']
     instrs[xchg_instr_idx]['i'] = 'nop' if instrs[xchg_instr_idx]['i'] == 'jmp' else 'jmp'
     acc, terminated = run(instrs)
-    instrs[xchg_instr_idx]['i'] = org
+    instrs[xchg_instr_idx]['i'] = 'nop' if instrs[xchg_instr_idx]['i'] == 'jmp' else 'jmp'
     if terminated:
         break
 
