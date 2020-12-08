@@ -11,14 +11,14 @@ from common import parselines
 
 # ======= Helper Functions/Classes ======= #
 def run(instrs):
-    seen = []
+    seen = set()
     acc = 0
     ic = 0
     while ic < len(instrs):
         cur_instr = instrs[ic]
         if ic in seen:
             return acc, False
-        seen.append(ic)
+        seen.add(ic)
         if cur_instr['i'] == "acc":
             acc += cur_instr['d']
         elif cur_instr['i'] == "jmp":
