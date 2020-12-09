@@ -7,8 +7,7 @@
 from itertools import combinations
 from pathlib import Path
 
-from more_itertools import windowed, first_true
-from more_itertools.more import first
+from more_itertools import first_true, windowed
 
 
 # ======= Helper Functions/Classes ======= #
