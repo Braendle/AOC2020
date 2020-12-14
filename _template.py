@@ -6,13 +6,19 @@
 
 from pathlib import Path
 
+import common
+
 # ======= Helper Functions/Classes ======= #
 
 
 
 # ============= Input Data ============= #
-raw_data = Path("./inputs/{day:02d}/input.txt").read_text()
-data = raw_data.splitlines()
+raw_data = Path("./inputs/{day:02d}/input.txt").read_text().strip()
+
+lines = raw_data.splitlines()
+words = raw_data.split(", ")
+ints = [int(x) for x in raw_data.split("\n")]
+data = common.parselines("{{number:d}}: {{string}}", raw_data)
 
 # =============== PART 1 =============== #
 res1 = None
