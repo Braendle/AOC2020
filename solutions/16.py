@@ -45,15 +45,14 @@ print(f"Result of Part 1: {res1}")
 candidates = defaultdict(list)
 for i_field in range(len(valid_tickets[0])):
     for field_name, (l1, h1, l2, h2) in field_ranges.items():
-        valid = True
         for vt in valid_tickets:
             if not (l1 <= vt[i_field] <= h1 or l2 <= vt[i_field] <= h2):
-                valid = False
                 break
         else:
             candidates[i_field].append(field_name)
 
 field_mapping = {}
+# successively find singeltons and remove them from other candidates
 while len(candidates) > 0:
     for i_field, field_names in candidates.items():
         if len(field_names) == 1:
